@@ -1,0 +1,46 @@
+.season-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-top: 100px;
+    width: 100vw;
+    height: 100vh;
+    background: url('/assets/summer-bg.jpg'), no-repeat center top / cover;
+}
+
+.season {
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+    border: 3px solid #ccc;
+}
+
+.summer {
+    background: url('/assets/summer-bg.jpg') no-repeat center top / cover;
+}
+
+.rain {
+    background: url('/assets/rainy-bg.jpg') no-repeat center top / cover;
+}
+
+.winter {
+    background: url('/assets/winter-bg.jpg') no-repeat center top / cover;
+}
+
+h1 {
+    color: orange;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.seasons {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0 50px;
+}
+
+.volume {
+    text-align: center;
+}
