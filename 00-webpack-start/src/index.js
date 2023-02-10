@@ -1,4 +1,5 @@
 // const btn = document.querySelector(".button");
+import './index.scss'
 const seasons = document.querySelector(".seasons");
 let volume = document.getElementById('volume-slider');
 
@@ -7,13 +8,17 @@ volume.addEventListener("change", function(e) {
     console.log(audio[0].volume)
 })
 
+
 const data = [
-  { id: 0, img: "./img/summer-bg.jpg", sound: (src = "/assets/sounds/summer.mp3") },
-  { id: 1, img: "./img/rainy-bg.jpg", sound: (src = "/assets/sounds/rain.mp3") },
-  { id: 2, img: "./img/winter-bg.jpg", sound: (src = "/assets/sounds/winter.mp3") },
+  { id: 0, img: "./img/summer-bg.jpg", sound: '../assets/sounds/summer.mp3' },
+  { id: 1, img: "./img/rainy-bg.jpg", sound: "../assets/sounds/rain.mp3" },
+  { id: 2, img: "./img/winter-bg.jpg", sound: "../assets/sounds/winter.mp3" },
 ];
 
 let audio = [];
+// aud = new Audio("/assets/sounds/rain.mp3");
+// aud.play()
+// console.log(aud)
 let lastSeason = -1;
 
 seasons.addEventListener("click", function (e) {
@@ -48,7 +53,3 @@ function play(season) {
   console.log("play " + season);
   return audio[season].play();
 }
-function setVolume(volume) {
-    console.log(volume);
-    return audio[season].volume=volume;
- }   

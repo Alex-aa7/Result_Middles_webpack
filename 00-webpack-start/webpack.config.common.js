@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const SRC = path.resolve(__dirname, 'node_modules');
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
@@ -46,6 +47,11 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.mp3$/,
+        include: SRC,
+        loader: 'file-loader'
+      }
     ],
   },
 };
