@@ -3,62 +3,36 @@ import {soundsSettings} from "./constants";
 // const btn = document.querySelector(".button");
 const $seasons = document.querySelector("#seasons");
 const $seasonContainer = document.querySelector("#seasonContainer");
-const volume = document.querySelector('#volume-slider');
-const audios = [];
-const audio = new Audio();
+const $volume = document.querySelector('#volume-slider');
+const audio = new Audio(soundsSettings[0].soundSrc);
+audio.loop = true;
+
 let currentSeason = 0;
-let lastSeason = -1;
 
-volume.addEventListener("change", (e) => {
-    audios.forEach((elem, i) => {
-        audios[i].volume = e.currentTarget.value / 100
-    })
-    console.log('audio:', audios);
-    console.log(audios[0].volume)
-})
+$volume.addEventListener("change", (event) => {
+    audio.volume = event.target.value / 100;
+});
 
-function selectSeason(seasonSettings) {
-    audios[season] ? '' : (audios[season] = new Audio(data[season].sound));
-
-    if (lastSeason === season) {
-        togglePlay(season);
-    } else {
-        if (lastSeason === -1) {
-            togglePlay(season);
+function selectSeason(seasonSettings, index) {
+    if (currentSeason === index) {
+        if (audio.paused) {
+            audio.play();
         } else {
-            pause(lastSeason);
-            play(season);
+            audio.pause();
         }
-        lastSeason = season;
+    } else {
+        audio.src = seasonSettings.soundSrc;
+        audio.play();
     }
-}
-
-function togglePlay(season) {
-    console.log(season);
-    return audios[season].paused ? audios[season].play() : audios[season].pause();
-}
-
-function pause(season) {
-    console.log("pause " + season);
-    return audios[season].pause();
-}
-
-function play(season) {
-    console.log("play " + season);
-    return audios[season].play();
-}
-
-function setVolume(volume) {
-    console.log(volume);
-    return audios[season].volume = volume;
 }
 
 const createSoundItem = (sound, index) => {
     const $soundItem = document.createElement('div');
     $soundItem.classList.add('season');
+    $soundItem.dataset.code = sound.code;
     $soundItem.style.backgroundImage = `url(${sound.bgImg})`;
     $soundItem.addEventListener('click', () => {
-        selectSeason(sound)
+        selectSeason(sound, index)
         setCuttentItem(index)
         updateCommonBg();
     });
