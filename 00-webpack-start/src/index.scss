@@ -10,7 +10,7 @@ html, body{
     padding-top: 100px;
     width: 100%;
     height: calc(100vh - 100px);;
-    background: url('../assets/summer-bg.jpg') no-repeat top / cover;
+    background: no-repeat top / cover;
 }
 
 .season {
@@ -18,18 +18,7 @@ html, body{
     height: 200px;
     border-radius: 30px;
     border: 3px solid #ccc;
-}
-
-.summer {
-    background: url('../assets/summer-bg.jpg') no-repeat center top / cover;
-}
-
-.rain {
-    background: url('../assets/rainy-bg.jpg') no-repeat center top / cover;
-}
-
-.winter {
-    background: url('../assets/winter-bg.jpg') no-repeat center top / cover;
+    background:  no-repeat center top / cover;
 }
 
 h1 {
