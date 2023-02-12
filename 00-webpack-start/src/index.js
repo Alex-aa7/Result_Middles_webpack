@@ -5,6 +5,7 @@ const $seasons = document.querySelector("#seasons");
 const $seasonContainer = document.querySelector("#seasonContainer");
 const volume = document.querySelector('#volume-slider');
 const audios = [];
+const audio = new Audio();
 let currentSeason = 0;
 let lastSeason = -1;
 
@@ -16,12 +17,7 @@ volume.addEventListener("change", (e) => {
     console.log(audios[0].volume)
 })
 
-
-seasons.addEventListener("click", function (e) {
-    selectSeason(e.target.id);
-});
-
-function selectSeason(season) {
+function selectSeason(seasonSettings) {
     audios[season] ? '' : (audios[season] = new Audio(data[season].sound));
 
     if (lastSeason === season) {
@@ -57,14 +53,20 @@ function setVolume(volume) {
     return audios[season].volume = volume;
 }
 
-const createSoundItem = ({bgImg}, index) => {
+const createSoundItem = (sound, index) => {
     const $soundItem = document.createElement('div');
     $soundItem.classList.add('season');
-    $soundItem.style.backgroundImage = `url(${bgImg})`;
+    $soundItem.style.backgroundImage = `url(${sound.bgImg})`;
     $soundItem.addEventListener('click', () => {
+        selectSeason(sound)
         setCuttentItem(index)
         updateCommonBg();
     });
+
+    const $itemIcon = document.createElement('img');
+    $itemIcon.classList.add('season__icon');
+    $itemIcon.src = sound.iconImg;
+    $soundItem.append($itemIcon);
 
     return $soundItem;
 }
