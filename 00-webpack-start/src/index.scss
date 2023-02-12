@@ -1,11 +1,16 @@
+html, body{
+ padding: 0;
+ margin: 0;
+}
+
 .season-wrapper {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     padding-top: 100px;
-    width: 100vw;
-    height: 100vh;
-    background: url('/assets/summer-bg.jpg'), no-repeat center top / cover;
+    width: 100%;
+    height: calc(100vh - 100px);;
+    background: url('../assets/summer-bg.jpg') no-repeat top / cover;
 }
 
 .season {
@@ -16,15 +21,15 @@
 }
 
 .summer {
-    background: url('/assets/summer-bg.jpg') no-repeat center top / cover;
+    background: url('../assets/summer-bg.jpg') no-repeat center top / cover;
 }
 
 .rain {
-    background: url('/assets/rainy-bg.jpg') no-repeat center top / cover;
+    background: url('../assets/rainy-bg.jpg') no-repeat center top / cover;
 }
 
 .winter {
-    background: url('/assets/winter-bg.jpg') no-repeat center top / cover;
+    background: url('../assets/winter-bg.jpg') no-repeat center top / cover;
 }
 
 h1 {

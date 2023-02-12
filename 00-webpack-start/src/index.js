@@ -1,3 +1,4 @@
+import './index.scss';
 // const btn = document.querySelector(".button");
 const seasons = document.querySelector(".seasons");
 let volume = document.getElementById('volume-slider');
@@ -8,12 +9,12 @@ volume.addEventListener("change", function(e) {
 })
 
 const data = [
-  { id: 0, img: "./img/summer-bg.jpg", sound: (src = "/assets/sounds/summer.mp3") },
-  { id: 1, img: "./img/rainy-bg.jpg", sound: (src = "/assets/sounds/rain.mp3") },
-  { id: 2, img: "./img/winter-bg.jpg", sound: (src = "/assets/sounds/winter.mp3") },
+    { id: 0, img: "./img/summer-bg.jpg", sound: {src: "/assets/sounds/summer.mp3"} },
+  { id: 1, img: "./img/rainy-bg.jpg", sound: {src: "/assets/sounds/rain.mp3"} },
+  { id: 2, img: "./img/winter-bg.jpg", sound: {src: "/assets/sounds/winter.mp3"} },
 ];
 
-let audio = [];
+const audio = [];
 let lastSeason = -1;
 
 seasons.addEventListener("click", function (e) {
@@ -23,10 +24,10 @@ seasons.addEventListener("click", function (e) {
 function selectSeason(season) {
   audio[season] ? '': (audio[season] = new Audio(data[season].sound));
 
-  if (lastSeason == season) {
+  if (lastSeason === season) {
     togglePlay(season);
   } else {
-    if (lastSeason == -1) {
+    if (lastSeason === -1) {
       togglePlay(season);
     } else {
       pause(lastSeason);
@@ -51,4 +52,4 @@ function play(season) {
 function setVolume(volume) {
     console.log(volume);
     return audio[season].volume=volume;
- }   
+ }
